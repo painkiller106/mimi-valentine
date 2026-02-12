@@ -139,13 +139,35 @@ function sayYes() {
 
 const noBtn = document.getElementById("noBtn");
 
-noBtn.addEventListener("mouseover", function() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+/* Make No button move randomly */
+function moveButton() {
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth - 20;
+    const maxY = window.innerHeight - buttonHeight - 20;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+/* Desktop click */
+noBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    moveButton();
 });
 
+/* Mobile touch */
+noBtn.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    moveButton();
+});
+    
+/* Floating hearts */
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -162,5 +184,7 @@ function createHeart() {
 setInterval(createHeart, 300);
 </script>
 
+
 </body>
 </html>
+
