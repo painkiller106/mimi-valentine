@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mimi, Be My Valentine? 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+        color: white;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.15);
+        padding: 40px;
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        width: 90%;
+        max-width: 400px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .buttons {
+        position: relative;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        margin: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .yes {
+        background: white;
+        color: #ff4b6e;
+    }
+
+    .yes:hover {
+        transform: scale(1.1);
+    }
+
+    .no {
+        background: #ff4b6e;
+        color: white;
+        position: absolute;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        display: none;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 20px;
+        animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+        from { transform: translateY(100vh); opacity: 1; }
+        to { transform: translateY(-10vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Mimi 💖</h1>
+    <p>
+        Hi. It’s Ritesh.  
+        I was going to act cool…  
+        but honestly, you’re my favorite human.  
+        So let’s not complicate this.
+    </p>
+
+    <p><strong>Will you be my Valentine? 😌</strong></p>
+
+    <div class="buttons">
+        <button class="yes" onclick="sayYes()">YES 💕</button>
+        <button class="no" id="noBtn">No 🙈</button>
+    </div>
+
+    <div id="message">
+        I knew it 😎  
+        Officially Mimi ❤️ Ritesh forever.  
+        Now I expect chocolate and extra hugs.
+    </div>
+</div>
+
+<script>
+function sayYes() {
+    document.getElementById("message").style.display = "block";
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
