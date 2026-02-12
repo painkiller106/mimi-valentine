@@ -11,39 +11,34 @@
         padding: 0;
         font-family: 'Poppins', sans-serif;
         background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
         text-align: center;
         color: white;
+        overflow-x: hidden;
     }
 
-    .card {
-        background: rgba(255,255,255,0.15);
-        padding: 40px;
-        border-radius: 25px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        width: 90%;
-        max-width: 400px;
-        animation: fadeIn 1.5s ease-in-out;
+    .section {
+        padding: 60px 20px;
     }
 
     h1 {
-        font-size: 2.2rem;
-        margin-bottom: 15px;
+        font-size: 2.5rem;
     }
 
     p {
         font-size: 1.1rem;
+        max-width: 500px;
+        margin: 20px auto;
         line-height: 1.6;
-        margin-bottom: 25px;
     }
 
-    .buttons {
-        position: relative;
+    img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+        margin-top: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
     button {
@@ -74,18 +69,12 @@
 
     #message {
         margin-top: 20px;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         display: none;
-        animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
     }
 
     .heart {
-        position: absolute;
+        position: fixed;
         font-size: 20px;
         animation: float 5s linear infinite;
     }
@@ -99,30 +88,51 @@
 
 <body>
 
-<div class="card">
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="section">
     <h1>Mimi 💖</h1>
     <p>
         Hi. It’s Ritesh.  
-        I was going to act cool…  
-        but honestly, you’re my favorite human.  
-        So let’s not complicate this.
+        I tried to act cool. Failed.  
+        So here we are.
     </p>
 
-    <p><strong>Will you be my Valentine? 😌</strong></p>
+    <!-- Her Photo -->
+    <img src="IMG-20260122-WA0003.jpg" alt="Mimi">
 
-    <div class="buttons">
+    <!-- First Date Memory -->
+    <p>
+        Remember our first date?  
+        I was pretending to be confident…  
+        but internally I was just thinking —  
+        “Okay wow. She’s special.”  
+        And I’ve known it ever since.
+    </p>
+
+    <h2>So… will you be my Valentine? 😌</h2>
+
+    <div style="position: relative; height: 100px;">
         <button class="yes" onclick="sayYes()">YES 💕</button>
         <button class="no" id="noBtn">No 🙈</button>
     </div>
 
     <div id="message">
-        I knew it 😎  
+        I KNEW IT 😎  
         Officially Mimi ❤️ Ritesh forever.  
-        Now I expect chocolate and extra hugs.
+        Prepare for extra hugs and lifetime teasing.
     </div>
 </div>
 
 <script>
+/* Force music play on mobile after first tap */
+document.addEventListener('click', function() {
+    document.getElementById('bgMusic').play();
+}, { once: true });
+
 function sayYes() {
     document.getElementById("message").style.display = "block";
 }
